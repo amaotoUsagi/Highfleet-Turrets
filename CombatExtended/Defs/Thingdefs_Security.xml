@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <ThingDef ParentName="TurretAutoBase" Name="HighfleetTurretBase" Abstract="true">
+    <rotatable>false</rotatable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <fillPercent>0.95</fillPercent>
+    <passability>Impassable</passability>
+    <damageMultipliers>
+      <li>
+        <damageDef>Bullet</damageDef>
+        <multiplier>0.25</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+      <li>
+        <damageDef>Thermobaric</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb_Secondary</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+      <li>
+        <damageDef>Demolish</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+    </damageMultipliers>
+  </ThingDef>
+
+  <!-- 2A37 37mm Rotary Cannon-->
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_2A37_Base</defName>
+    <label>2A37</label>
+    <description>A 37mm six-barrel close-in weapon system.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/2A37_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3, 3)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>25000</WorkToBuild>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <Mass>5100</Mass>
+      <ShootingAccuracyTurret>1.25</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <Steel>350</Steel>
+      <Plasteel>40</Plasteel>
+      <ComponentIndustrial>8</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 2 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>8</ComponentIndustrial>
+        <ReinforcedBarrel>1</ReinforcedBarrel>
+        <Steel>200</Steel>
+        <Plasteel>40</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(2,2)</size>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_2A37_Turret</turretGunDef>
+      <turretTopDrawSize>3</turretTopDrawSize>
+      <turretBurstCooldownTime>0.35</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>700</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_2A37_Turret</defName>
+    <label>2A37 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_2A37</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 37mm six-barrel close-in weapon system.</description>
+    <statBases>
+      <SightsEfficiency>2.3</SightsEfficiency>
+      <ShotSpread>0.02</ShotSpread>
+      <SwayFactor>0.22</SwayFactor>
+      <RangedWeapon_Cooldown>0.35</RangedWeapon_Cooldown>
+      <Mass>5100</Mass>
+    </statBases>
+    <soundInteract>Turret_Small_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>0.31</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_37x252mmSR_HEDP</defaultProjectile>
+        <warmupTime>2.55</warmupTime>
+        <range>78</range>
+        <minRange>3</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+        <burstShotCount>50</burstShotCount>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>37mm_Fire</soundCast>
+        <soundCastTail>37mm_Tail</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>500</magazineSize>
+        <reloadTime>9.2</reloadTime>
+        <ammoSet>AmmoSet_37x252mmSR</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>SuppressFire</aiAimMode>
+        <noSingleShot>true</noSingleShot>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- AK-725 57mm Twin auto cannon-->
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_AK725_Base</defName>
+    <label>AK-725 VYMPEL</label>
+    <description>A 57mm multi purpose twin cannon.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/AK725_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3, 3)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>25000</WorkToBuild>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <Mass>5100</Mass>
+      <ShootingAccuracyTurret>1.25</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <Steel>500</Steel>
+      <Plasteel>40</Plasteel>
+      <ComponentIndustrial>10</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 4 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>10</ComponentIndustrial>
+        <ReinforcedBarrel>2</ReinforcedBarrel>
+        <Steel>200</Steel>
+        <Plasteel>40</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(2,2)</size>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_AK725_Turret</turretGunDef>
+      <turretTopDrawSize>3.2</turretTopDrawSize>
+      <turretBurstCooldownTime>0.36</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>700</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_AK725_Turret</defName>
+    <label>AK-725 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_AK725</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 57mm multi purpose twin cannon.</description>
+    <statBases>
+      <SightsEfficiency>2.3</SightsEfficiency>
+      <ShotSpread>0.02</ShotSpread>
+      <SwayFactor>0.22</SwayFactor>
+      <RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+      <Mass>5100</Mass>
+    </statBases>
+    <soundInteract>Turret_Small_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>0.65</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_57x348mmSR_HEDP</defaultProjectile>
+        <warmupTime>1.55</warmupTime>
+        <range>78</range>
+        <minRange>5</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <burstShotCount>14</burstShotCount>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>57mm_Fire</soundCast>
+        <soundCastTail>57mm_Tail</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>140</magazineSize>
+        <reloadTime>4.9</reloadTime>
+        <ammoSet>AmmoSet_57x348mmSR</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>SuppressFire</aiAimMode>
+        <noSnapshot>true</noSnapshot>
+        <noSingleShot>true</noSingleShot>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- AK-100 100mm Twin auto cannon-->
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_AK100_Base</defName>
+    <label>AK-100</label>
+    <description>A 100mm multi-purpose rapid fire cannon.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/AK100_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4.5, 4.5)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>45000</WorkToBuild>
+      <MaxHitPoints>900</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <Mass>5100</Mass>
+      <ShootingAccuracyTurret>1.5</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <Steel>700</Steel>
+      <Plasteel>90</Plasteel>
+      <ComponentIndustrial>12</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 6 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>12</ComponentIndustrial>
+        <ReinforcedBarrel>2</ReinforcedBarrel>
+        <Steel>400</Steel>
+        <Plasteel>90</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(3,3)</size>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_AK100_Turret</turretGunDef>
+      <turretTopDrawSize>4.096</turretTopDrawSize>
+      <turretBurstCooldownTime>0.38</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_AK100_Turret</defName>
+    <label>AK-100 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_AK100</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 100mm multi-purpose rapid fire cannon.</description>
+    <statBases>
+      <SightsEfficiency>2.3</SightsEfficiency>
+      <ShotSpread>0.03</ShotSpread>
+      <SwayFactor>0.22</SwayFactor>
+      <RangedWeapon_Cooldown>0.38</RangedWeapon_Cooldown>
+      <Mass>5100</Mass>
+    </statBases>
+    <soundInteract>Turret_Medium_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>1.43</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_100mmL70_HE</defaultProjectile>
+        <warmupTime>4.55</warmupTime>
+        <range>92</range>
+        <minRange>10</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>100mm_Fire</soundCast>
+        <soundCastTail>100mm_Tail</soundCastTail>
+        <muzzleFlashScale>24</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>40</magazineSize>
+        <reloadTime>9.8</reloadTime>
+        <ammoSet>AmmoSet_100mmL70</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>AimedShot</aiAimMode>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- D-80 130mm Auto cannon-->
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_D80_Base</defName>
+    <label>D-80 MOLOT</label>
+    <description>A 130mm medium-calibre automatic cannon.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/D80_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4.5, 4.5)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>45000</WorkToBuild>
+      <MaxHitPoints>900</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <ShootingAccuracyTurret>1.5</ShootingAccuracyTurret>
+      <Mass>5100</Mass>
+    </statBases>
+    <costList>
+      <Steel>750</Steel>
+      <Plasteel>90</Plasteel>
+      <ComponentIndustrial>12</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 6 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>12</ComponentIndustrial>
+        <ReinforcedBarrel>1</ReinforcedBarrel>
+        <Steel>600</Steel>
+        <Plasteel>90</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(3,3)</size>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_D80_Turret</turretGunDef>
+      <turretTopDrawSize>5.12</turretTopDrawSize>
+      <turretBurstCooldownTime>0.39</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_D80_Turret</defName>
+    <label>D-80 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_D80</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 130mm medium-calibre automatic cannon.</description>
+    <statBases>
+      <SightsEfficiency>2.36</SightsEfficiency>
+      <ShotSpread>0.03</ShotSpread>
+      <SwayFactor>0.22</SwayFactor>
+      <RangedWeapon_Cooldown>0.39</RangedWeapon_Cooldown>
+      <Mass>950</Mass>
+    </statBases>
+    <soundInteract>Turret_Medium_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>2.17</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_130mmL70_HE</defaultProjectile>
+        <warmupTime>4.6</warmupTime>
+        <range>92</range>
+        <minRange>13</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>130mm_Fire</soundCast>
+        <soundCastTail>130mm_Tail</soundCastTail>
+        <muzzleFlashScale>24</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>40</magazineSize>
+        <reloadTime>9.8</reloadTime>
+        <ammoSet>AmmoSet_130mmL70</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>AimedShot</aiAimMode>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- MK-1-180 180mm Cannon-->
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_MK1_180_Base</defName>
+    <label>MK-1-180</label>
+    <description>A 180mm single barrel large-caliber cannon.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/MK1_180_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(6, 6)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>65000</WorkToBuild>
+      <MaxHitPoints>1200</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <ShootingAccuracyTurret>1.5</ShootingAccuracyTurret>
+      <Mass>13000</Mass>
+    </statBases>
+    <costList>
+      <Steel>750</Steel>
+      <Plasteel>160</Plasteel>
+      <ComponentIndustrial>12</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 6 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>18</ComponentIndustrial>
+        <ReinforcedBarrel>1</ReinforcedBarrel>
+        <Steel>600</Steel>
+        <Plasteel>160</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(4,4)</size>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_MK1_180_Turret</turretGunDef>
+      <turretTopDrawSize>8</turretTopDrawSize>
+      <turretBurstCooldownTime>2.57</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1200</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_MK1_180_Turret</defName>
+    <label>MK-1-180 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_MK1_180</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 180mm single barrel large-caliber cannon.</description>
+    <statBases>
+      <SightsEfficiency>2.3</SightsEfficiency>
+      <ShotSpread>0.03</ShotSpread>
+      <SwayFactor>0.27</SwayFactor>
+      <RangedWeapon_Cooldown>2.83</RangedWeapon_Cooldown>
+      <Mass>950</Mass>
+    </statBases>
+    <soundInteract>Turret_Medium_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>2.83</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_180mm_HE</defaultProjectile>
+        <warmupTime>4.55</warmupTime>
+        <range>128</range>
+        <minRange>18</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>180mm_Fire</soundCast>
+        <soundCastTail>180mm_Tail</soundCastTail>
+        <muzzleFlashScale>36</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>10</magazineSize>
+        <reloadTime>9.8</reloadTime>
+        <ammoSet>AmmoSet_180mm</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>AimedShot</aiAimMode>
+        <noSingleShot>true</noSingleShot>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- MK-2-180 SARMAT 180mm Twin Cannon-->
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_MK2_180_Base</defName>
+    <label>MK-2-180 SARMAT</label>
+    <description>A 180mm large-caliber twin cannon.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/MK2_180_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Large</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(6, 6)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>65000</WorkToBuild>
+      <MaxHitPoints>1200</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <ShootingAccuracyTurret>1.5</ShootingAccuracyTurret>
+      <Mass>15900</Mass>
+    </statBases>
+    <costList>
+      <Steel>900</Steel>
+      <Plasteel>250</Plasteel>
+      <ComponentIndustrial>18</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 12 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>18</ComponentIndustrial>
+        <ReinforcedBarrel>2</ReinforcedBarrel>
+        <Steel>600</Steel>
+        <Plasteel>250</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(5,5)</size>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_MK2_180_Turret</turretGunDef>
+      <turretTopDrawSize>6.56</turretTopDrawSize>
+      <turretBurstCooldownTime>2.55</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>2400</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_MK2_180_Turret</defName>
+    <label>MK-2-180 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_MK2_180</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 180mm cannon in twin mounts.</description>
+    <statBases>
+      <SightsEfficiency>2.3</SightsEfficiency>
+      <ShotSpread>0.03</ShotSpread>
+      <SwayFactor>0.27</SwayFactor>
+      <RangedWeapon_Cooldown>2.55</RangedWeapon_Cooldown>
+      <Mass>15900</Mass>
+    </statBases>
+    <soundInteract>Turret_Medium_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>2.31</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_180mm_HE</defaultProjectile>
+        <warmupTime>4.55</warmupTime>
+        <range>128</range>
+        <minRange>18</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+        <burstShotCount>2</burstShotCount>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>180mm_Fire</soundCast>
+        <soundCastTail>180mm_Tail</soundCastTail>
+        <muzzleFlashScale>36</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>20</magazineSize>
+        <reloadTime>9.8</reloadTime>
+        <ammoSet>AmmoSet_180mm</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>AimedShot</aiAimMode>
+        <noSingleShot>true</noSingleShot>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- MK-6-180 SQUALL 180mm Sextuple cannon-->
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_MK6_180_Base</defName>
+    <label>MK-6-180 SQUALL</label>
+    <description>A 180mm six-barreled heavy main battery.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/MK6_180_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Large</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(7, 7)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>65000</WorkToBuild>
+      <MaxHitPoints>1500</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <Mass>98300</Mass>
+      <ShootingAccuracyTurret>1.5</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <Steel>1500</Steel>
+      <Plasteel>250</Plasteel>
+      <ComponentIndustrial>24</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 12 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>24</ComponentIndustrial>
+        <ReinforcedBarrel>6</ReinforcedBarrel>
+        <Steel>600</Steel>
+        <Plasteel>250</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(6,6)</size>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_MK6_180_Turret</turretGunDef>
+      <turretTopDrawSize>8</turretTopDrawSize>
+      <turretBurstCooldownTime>2.51</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>6000</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_MK6_180_Turret</defName>
+    <label>MK-6-180 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_MK6_180</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 180mm six-barreled heavy main battery.</description>
+    <statBases>
+      <SightsEfficiency>2.3</SightsEfficiency>
+      <ShotSpread>0.03</ShotSpread>
+      <SwayFactor>0.27</SwayFactor>
+      <RangedWeapon_Cooldown>2.51</RangedWeapon_Cooldown>
+      <Mass>98300</Mass>
+    </statBases>
+    <soundInteract>Turret_Medium_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>0.93</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_180mm_HE</defaultProjectile>
+        <warmupTime>4.55</warmupTime>
+        <range>128</range>
+        <minRange>18</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+        <burstShotCount>6</burstShotCount>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>180mm_Fire</soundCast>
+        <soundCastTail>180mm_Tail</soundCastTail>
+        <muzzleFlashScale>36</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>60</magazineSize>
+        <reloadTime>9.8</reloadTime>
+        <ammoSet>AmmoSet_180mm</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>AimedShot</aiAimMode>
+        <noSingleShot>true</noSingleShot>
+      </li>
+    </comps>
+  </ThingDef>
+
+
+
+  <ThingDef ParentName="HighfleetTurretBase">
+    <defName>Turret_A220_Base</defName>
+    <label>A-220</label>
+    <description>A 220mm multiple rocket launcher.</description>
+    <uiIconPath>Highfleet/Things/Building/Turrets/Icons/A220_Icon</uiIconPath>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Base_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(6, 6)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToBuild>60000</WorkToBuild>
+      <MaxHitPoints>1200</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <ShootingAccuracyTurret>2</ShootingAccuracyTurret>
+      <Mass>10600</Mass>
+    </statBases>
+    <costList>
+      <Steel>1500</Steel>
+      <Plasteel>160</Plasteel>
+      <ComponentIndustrial>18</ComponentIndustrial> <!-- 2 for servos, 2 for its targeting system, 2 for its loader, 12 for its weapon system -->
+    </costList>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ComponentIndustrial>18</ComponentIndustrial>
+        <ReinforcedBarrel>6</ReinforcedBarrel>
+        <Steel>600</Steel>
+        <Plasteel>160</Plasteel>
+      </costList>
+    </costListForDifficulty>
+    <size>(4,4)</size>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <rotatable>true</rotatable>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_A220_Turret</turretGunDef>
+      <turretTopDrawSize>4</turretTopDrawSize>
+      <turretBurstCooldownTime>1.58</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>CE_TurretHeavyWeapons</li>
+    </researchPrerequisites>
+    <thingCategories Inherit="false"/>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>3000</basePowerConsumption>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseTurretGun">
+    <defName>Gun_A220_Turret</defName>
+    <label>A-220 turret</label>
+    <graphicData>
+      <texPath>Highfleet/Things/Building/Turrets/Turret_A220</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <description>A 220mm multiple rocket launcher.</description>
+    <statBases>
+      <SightsEfficiency>2.36</SightsEfficiency>
+      <ShotSpread>0.03</ShotSpread>
+      <SwayFactor>0.19</SwayFactor>
+      <RangedWeapon_Cooldown>1.58</RangedWeapon_Cooldown>
+      <Mass>950</Mass>
+    </statBases>
+    <soundInteract>Turret_Medium_Reload</soundInteract>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <recoilAmount>0.01</recoilAmount>
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_220mmRocket_HE</defaultProjectile>
+        <warmupTime>2.4</warmupTime>
+        <range>128</range>
+        <minRange>22</minRange>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <burstShotCount>6</burstShotCount>
+        <ticksBetweenBurstShots>30</ticksBetweenBurstShots>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <soundCast>220mm_Fire</soundCast>
+        <soundCastTail>220mm_Tail</soundCastTail>
+        <muzzleFlashScale>36</muzzleFlashScale>
+        <recoilPattern>Mounted</recoilPattern>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>60</magazineSize>
+        <reloadTime>9.8</reloadTime>
+        <ammoSet>AmmoSet_220mmRocket</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiAimMode>SuppressFire</aiAimMode>
+        <noSingleShot>true</noSingleShot>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <ThingCategoryDef>
+        <defName>Ammo130mmL70</defName>
+        <label>130mm L/70</label>
+        <parent>AmmoShells</parent>
+        <iconPath>UI/Icons/ThingCategories/CaliberCannon</iconPath>
+    </ThingCategoryDef>
+
+    <!-- ==================== AmmoSet ========================== -->
+
+    <CombatExtended.AmmoSetDef>
+        <defName>AmmoSet_130mmL70</defName>
+        <label>130mm L/70</label>
+        <ammoTypes>
+            <Ammo_130mmL70_HE>Bullet_130mmL70_HE</Ammo_130mmL70_HE>
+            <Ammo_130mmL70_Incendiary>Bullet_130mmL70_Incendiary</Ammo_130mmL70_Incendiary>
+            <Ammo_130mmL70_Prox>Bullet_130mmL70_Prox</Ammo_130mmL70_Prox>
+            <Ammo_130mmL70_Sabot>Bullet_130mmL70_Sabot</Ammo_130mmL70_Sabot>
+            <Ammo_130mmL70_Guided MayRequire="3hstltd.framework">Bullet_130mmL70_Guided</Ammo_130mmL70_Guided>
+        </ammoTypes>
+        <isMortarAmmoSet>true</isMortarAmmoSet>
+    </CombatExtended.AmmoSetDef>
+
+    <!-- ==================== Ammo ========================== -->
+
+    <ThingDef Class="CombatExtended.AmmoDef" Name="Ammo130mmL70Base" ParentName="MediumAmmoBase" Abstract="True">
+        <description>Large cannon shell, mainly used in naval guns.</description>
+        <statBases>
+            <Mass>86.2</Mass>
+            <Bulk>110</Bulk>
+        </statBases>
+        <tradeTags>
+            <li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+        </tradeTags>
+        <thingCategories>
+            <li>Ammo130mmL70</li>
+        </thingCategories>
+        <stackLimit>25</stackLimit>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo130mmL70Base">
+        <defName>Ammo_130mmL70_HE</defName>
+        <label>130mm L/70 (HE)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/130mm/HE</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>480.6</MarketValue>
+        </statBases>
+        <ammoClass>RocketHE</ammoClass>
+        <detonateProjectile>Bullet_130mmL70_HE</detonateProjectile>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo130mmL70Base">
+        <defName>Ammo_130mmL70_Incendiary</defName>
+        <label>130mm L/70 (Incendiary)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/130mm/Incendiary</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>381.04</MarketValue>
+        </statBases>
+        <ammoClass>RocketThermobaric</ammoClass>
+        <detonateProjectile>Bullet_130mmL70_Incendiary</detonateProjectile>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo130mmL70Base">
+        <defName>Ammo_130mmL70_Prox</defName>
+        <label>130mm L/70 (Proximity Fuse)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/130mm/Proximity</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>464.94</MarketValue>
+        </statBases>
+        <ammoClass>HF_Proximity</ammoClass>
+        <detonateProjectile>Bullet_130mmL70_Prox</detonateProjectile>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo130mmL70Base">
+        <defName>Ammo_130mmL70_Sabot</defName>
+        <label>130mm L/70 (Sabot)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/130mm/Sabot</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>509.44</MarketValue>
+        </statBases>
+        <ammoClass>Sabot</ammoClass>
+        <cookOffProjectile>Bullet_130mmL70_Sabot</cookOffProjectile>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo130mmL70Base" MayRequire="3hstltd.framework">
+        <defName>Ammo_130mmL70_Guided</defName>
+        <label>130mm L/70 (Guided)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/130mm/Guided</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>457.1</MarketValue>
+        </statBases>
+        <ammoClass>HF_Guided</ammoClass>
+        <detonateProjectile>Bullet_130mmL70_Guided</detonateProjectile>
+    </ThingDef>
+
+    <!-- ================== Projectiles ================== -->
+
+    <ThingDef Name="Base130mmL70Bullet" ParentName="BaseExplosiveBullet" Abstract="true">
+        <graphicData>
+            <drawSize>1.3</drawSize>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <speed>172</speed>
+            <dropsCasings>true</dropsCasings>
+            <casingMoteDefname>Fleck_BigShell</casingMoteDefname>
+            <casingFilthDefname>Filth_CannonAmmoCasings</casingFilthDefname>
+            <soundExplode>Highfleet_Med_Explosion</soundExplode>
+            <soundAmbient>MortarRound_Ambient</soundAmbient>
+            <soundImpactAnticipate>Cannon_Directfire_PreImpact</soundImpactAnticipate>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="Base130mmL70Bullet">
+        <defName>Bullet_130mmL70_HE</defName>
+        <label>130mm L/70 shell (HE)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Projectiles/HE/Shell_Projectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>365</damageAmountBase>
+            <explosionRadius>4.5</explosionRadius>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Large>105</Fragment_Large>
+                    <Fragment_Small>104</Fragment_Small>
+                </fragments>
+                <fragAngleRange>0~0.5</fragAngleRange>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="Base130mmL70Bullet">
+        <defName>Bullet_130mmL70_Incendiary</defName>
+        <label>130mm L/70 shell (Incendiary)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Projectiles/Incendiary/130mm_Projectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Thermobaric</damageDef>
+            <damageAmountBase>376</damageAmountBase>
+            <explosionRadius>6</explosionRadius>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="Base130mmL70Bullet">
+        <defName>Bullet_130mmL70_Prox</defName>
+        <label>130mm L/70 shell (Proximity)</label>
+        <thingClass>CombatExtended.ProjectileCE_Bursting</thingClass>
+        <graphicData>
+            <texPath>Highfleet/Things/Projectiles/Proximity/130mm_Projectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>320</damageAmountBase>
+            <explosionRadius>4</explosionRadius>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+            <aimHeightOffset>1.4</aimHeightOffset>
+            <armingDelay>2</armingDelay>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Large>105</Fragment_Large>
+                    <Fragment_Small>104</Fragment_Small>
+                </fragments>
+                <fragXZAngleRange>-25~25</fragXZAngleRange>
+                <fragAngleRange>-45~0</fragAngleRange>
+                <fragSpeedFactor>0.01</fragSpeedFactor>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="Base130mmL70Bullet">
+        <defName>Bullet_130mmL70_Sabot</defName>
+        <label>130mm L/70 shell (Armor-Piercing)</label>
+        <thingClass>CombatExtended.BulletCE</thingClass>
+        <graphicData>
+            <texPath>Highfleet/Things/Projectiles/Sabot/Sabot_Projectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <speed>229</speed>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>468</damageAmountBase>
+            <armorPenetrationSharp>552</armorPenetrationSharp>
+            <armorPenetrationBlunt>678229</armorPenetrationBlunt>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="Base130mmL70Bullet" MayRequire="3hstltd.framework">
+        <defName>Bullet_130mmL70_Guided</defName>
+        <label>130mm L/70 shell (Guided)</label>
+        <thingClass>BillDoorsFramework.ProjectileGuidedBulletCE</thingClass>
+        <graphicData>
+            <texPath>Highfleet/Things/Projectiles/Guided/130mm_Projectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>440</damageAmountBase>
+            <armorPenetrationSharp>315</armorPenetrationSharp>
+            <armorPenetrationBlunt>85</armorPenetrationBlunt>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_ExplosiveCE">
+                <damageAmountBase>287</damageAmountBase>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+                <explosiveRadius>2</explosiveRadius>
+                <explosionSound>Highfleet_Med_Explosion</explosionSound>
+                <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+            </li>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Large>55</Fragment_Large>
+                    <Fragment_Small>35</Fragment_Small>
+                </fragments>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <!-- ==================== Recipes ========================== -->
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_130mmL70_HE</defName>
+        <label>make 130mm L/70 (HE) cartridge x1</label>
+        <description>Craft 1 130mm L/70 (HE) cartridge.</description>
+        <jobString>Making 130mm L/70 (HE) cartridge.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>108</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>9</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>FSX</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_130mmL70_HE>1</Ammo_130mmL70_HE>
+        </products>
+        <workAmount>15600</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_130mmL70_Incendiary</defName>
+        <label>make 130mm L/70 (Incendiary) cartridge x1</label>
+        <description>Craft 1 130mm L/70 (Incendiary) cartridge.</description>
+        <jobString>Making 130mm L/70 (Incendiary) cartridge.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>108</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>13</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>FSX</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_130mmL70_Incendiary>1</Ammo_130mmL70_Incendiary>
+        </products>
+        <workAmount>17200</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_130mmL70_Prox</defName>
+        <label>make 130mm L/70 (Proximity) cartridge x1</label>
+        <description>Craft 1 130mm L/70 (Proximity) cartridge.</description>
+        <jobString>Making 130mm L/70 (Proximity) cartridge.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>110</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>7</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>FSX</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_130mmL70_Prox>1</Ammo_130mmL70_Prox>
+        </products>
+        <workAmount>14800</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_130mmL70_Sabot</defName>
+        <label>make 130mm L/70 (Sabot) cartridge x1</label>
+        <description>Craft 1 130mm L/70 (Sabot) cartridge.</description>
+        <jobString>Making 130mm L/70 (Sabot) cartridge.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>40</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Uranium</li>
+                    </thingDefs>
+                </filter>
+                <count>34</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Plasteel</li>
+                    </thingDefs>
+                </filter>
+                <count>34</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>Uranium</li>
+                <li>Plasteel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_130mmL70_Sabot>1</Ammo_130mmL70_Sabot>
+        </products>
+        <workAmount>24400</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="3hstltd.framework">
+        <defName>MakeAmmo_130mmL70_Guided</defName>
+        <label>make 130mm L/70 (Guided) cartridge x1</label>
+        <description>Craft 1 130mm L/70 (Guided) cartridge.</description>
+        <jobString>Making 130mm L/70 (Guided) cartridge.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>108</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>6</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>ComponentSpacer</li>
+                <li>FSX</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_130mmL70_Guided>1</Ammo_130mmL70_Guided>
+        </products>
+        <workAmount>28800</workAmount>
+    </RecipeDef>
+
+</Defs>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <!-- Meant for Highfleet -->
+    <ThingCategoryDef>
+        <defName>Ammo37x252mmSR</defName>
+        <label>37x252mmSR</label>
+        <parent>AmmoHighCaliber</parent>
+        <iconPath>UI/Icons/ThingCategories/CaliberHighCaliber</iconPath>
+    </ThingCategoryDef>
+
+    <!-- ==================== AmmoSet ========================== -->
+
+    <CombatExtended.AmmoSetDef>
+        <defName>AmmoSet_37x252mmSR</defName>
+        <label>37x252mmSR</label>
+        <ammoTypes>
+            <Ammo_37x252mmSR_HEDP>Bullet_37x252mmSR_HEDP</Ammo_37x252mmSR_HEDP>
+            <Ammo_37x252mmSR_HEI>Bullet_37x252mmSR_HEI</Ammo_37x252mmSR_HEI>
+        </ammoTypes>
+        <similarTo>AmmoSet_Autocannon</similarTo>
+    </CombatExtended.AmmoSetDef>
+
+    <!-- ==================== Ammo ========================== -->
+
+    <ThingDef Class="CombatExtended.AmmoDef" Name="Ammo37x252mmSRBase" ParentName="MediumAmmoBase" Abstract="True">
+        <description>Large caliber cartridge used by autocannons.</description>
+        <statBases>
+            <Mass>1.47</Mass>
+            <Bulk>2.45</Bulk>
+        </statBases>
+        <tradeTags>
+            <li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+        </tradeTags>
+        <thingCategories>
+            <li>Ammo37x252mmSR</li>
+        </thingCategories>
+        <stackLimit>500</stackLimit>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo37x252mmSRBase">
+        <defName>Ammo_37x252mmSR_HEDP</defName>
+        <label>37x252mmSR (HEDP)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/Autocannon/HE</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>9.42</MarketValue>
+        </statBases>
+        <ammoClass>HF_HEDP</ammoClass>
+        <detonateProjectile>Bullet_37x252mmSR_HEDP</detonateProjectile>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo37x252mmSRBase">
+        <defName>Ammo_37x252mmSR_HEI</defName>
+        <label>37x252mmSR (Incendiary)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/Autocannon/Incendiary</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>9.92</MarketValue>
+        </statBases>
+        <ammoClass>HF_Incendiary</ammoClass>
+        <detonateProjectile>Bullet_37x252mmSR_HEI</detonateProjectile>
+    </ThingDef>
+
+    <!-- ================== Projectiles ================== -->
+
+    <ThingDef Name="Base37x252mmSRBullet" ParentName="BaseBulletCE" Abstract="true">
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Big</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bullet</damageDef>
+            <speed>162</speed>
+            <dropsCasings>true</dropsCasings>
+            <casingMoteDefname>Fleck_RifleAmmoCasings_HighCal</casingMoteDefname>
+            <casingFilthDefname>Filth_RifleAmmoCasings_HighCal</casingFilthDefname>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="Base37x252mmSRBullet">
+        <defName>Bullet_37x252mmSR_HEDP</defName>
+        <label>37x252mmSR shell (HEDP)</label>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageAmountBase>101</damageAmountBase>
+            <armorPenetrationSharp>47</armorPenetrationSharp>
+            <armorPenetrationBlunt>7.418</armorPenetrationBlunt>
+            <screenShakeFactor>0</screenShakeFactor>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_ExplosiveCE">
+                <damageAmountBase>25</damageAmountBase>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+                <explosiveRadius>0.5</explosiveRadius>
+                <explosionSound>Highfleet_Small_Explosion</explosionSound>
+                <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+            </li>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Large>2</Fragment_Large>
+                    <Fragment_Small>1</Fragment_Small>
+                </fragments>
+                <fragXZAngleRange>-25~25</fragXZAngleRange>
+                <fragAngleRange>0~0.5</fragAngleRange>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="Base37x252mmSRBullet">
+        <defName>Bullet_37x252mmSR_HEI</defName>
+        <label>37x252mmSR shell (Incendiary)</label>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageAmountBase>101</damageAmountBase>
+            <armorPenetrationSharp>47</armorPenetrationSharp>
+            <armorPenetrationBlunt>7.418</armorPenetrationBlunt>
+            <screenShakeFactor>0</screenShakeFactor>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_ExplosiveCE">
+                <damageAmountBase>20</damageAmountBase>
+                <explosiveDamageType>Thermobaric</explosiveDamageType>
+                <explosiveRadius>1.2</explosiveRadius>
+                <explosionSound>Highfleet_Small_Explosion</explosionSound>
+                <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+                <postExplosionSpawnThingDef>FilthPrometheum</postExplosionSpawnThingDef>
+                <postExplosionSpawnChance>0.1</postExplosionSpawnChance>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <!-- ==================== Recipes ========================== -->
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_37x252mmSR_HEDP</defName>
+        <label>make 37x252mmSR (HEDP) cartridge x25</label>
+        <description>Craft 25 37x252mmSR (HEDP) cartridges.</description>
+        <jobString>Making 37x252mmSR (HEDP) cartridges.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>74</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>FSX</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_37x252mmSR_HEDP>25</Ammo_37x252mmSR_HEDP>
+        </products>
+        <workAmount>9800</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_37x252mmSR_HEI</defName>
+        <label>make 37x252mmSR (HEI) cartridge x25</label>
+        <description>Craft 25 37x252mmSR (HEI) cartridges.</description>
+        <jobString>Making 37x252mmSR (HEI) cartridges.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>74</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Prometheum</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>FSX</li>
+                <li>Prometheum</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_37x252mmSR_HEI>25</Ammo_37x252mmSR_HEI>
+        </products>
+        <workAmount>10600</workAmount>
+    </RecipeDef>
+
+</Defs>

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+    <SoundDef>
+        <defName>37mm_Fire</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/37mm/Near</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>100~100</volumeRange>
+            </li>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/37mm/Far</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>100~100</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>37mm_Tail</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <onCamera>True</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/37mm/Far</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>50~50</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>57mm_Fire</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/57mm/Near</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>50~50</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>57mm_Tail</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <onCamera>True</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/57mm/Far</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>50~50</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>100mm_Fire</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/100mm/Near</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>50~50</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>100mm_Tail</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <onCamera>True</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/57mm/Far</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>50~50</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>130mm_Fire</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/130mm/Near</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>50~50</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>130mm_Tail</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <onCamera>True</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/130mm/Far</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>10~10</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>180mm_Fire</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/180mm/Near</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>50~50</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>180mm_Tail</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <onCamera>True</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/180mm/Far</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>15~15</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>220mm_Fire</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/220mm/Near</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>15~20</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>220mm_Tail</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNewest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <onCamera>True</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Shot/220mm/Far</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+                <volumeRange>20~20</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>Turret_Small_Reload</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNearest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Reload/Small</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>Turret_Medium_Reload</defName>  
+        <context>MapOnly</context>
+        <priorityMode>PrioritizeNearest</priorityMode>
+        <maxVoices>8</maxVoices>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Reload/Medium</clipPath>
+                    </li>
+                </grains>   
+                <sustainLoop>False</sustainLoop>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>Cannon_Directfire_PreImpact</defName>  
+        <context>MapOnly</context>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Flyby/Cannon</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>28.82353~37.05883</volumeRange>
+                <tempoAffectedByGameSpeed>true</tempoAffectedByGameSpeed>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>Rocket_PreImpact</defName>  
+        <context>MapOnly</context>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Flyby/Rocket</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>28.82353~37.05883</volumeRange>
+                <tempoAffectedByGameSpeed>true</tempoAffectedByGameSpeed>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>Highfleet_Big_Explosion</defName>  
+        <context>MapOnly</context>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Explosions/Big</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>150~200</volumeRange>
+            </li>
+            <li>
+                <onCamera>true</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Explosions/Big</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>25~30</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>Highfleet_Med_Explosion</defName>  
+        <context>MapOnly</context>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Explosions/Medium</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>150~200</volumeRange>
+            </li>
+            <li>
+                <onCamera>true</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Explosions/Medium</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>25~30</volumeRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+
+    <SoundDef>
+        <defName>Highfleet_Small_Explosion</defName>  
+        <context>MapOnly</context>
+        <maxSimultaneous>1</maxSimultaneous>
+        <subSounds>
+            <li>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Explosions/Small</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>100~150</volumeRange>
+                <pitchRange>2.70~2.75</pitchRange>
+            </li>
+            <li>
+                <onCamera>true</onCamera>
+                <grains>
+                    <li Class="AudioGrain_Folder">
+                        <clipPath>Highfleet/Explosions/Small</clipPath>
+                    </li>
+                </grains>
+                <volumeRange>7.5~10</volumeRange>
+                <pitchRange>2.5~2.5</pitchRange>
+            </li>
+        </subSounds>
+    </SoundDef>
+</Defs>

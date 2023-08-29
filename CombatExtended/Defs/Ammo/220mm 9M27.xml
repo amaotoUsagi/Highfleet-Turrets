@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <ThingCategoryDef>
+        <defName>Ammo220mmRocket</defName>
+        <label>220mm Rocket</label>
+        <parent>AmmoShells</parent>
+        <iconPath>UI/Icons/ThingCategories/CaliberCannon</iconPath>
+    </ThingCategoryDef>
+
+    <!-- ==================== AmmoSet ========================== -->
+
+    <CombatExtended.AmmoSetDef>
+        <defName>AmmoSet_220mmRocket</defName>
+        <label>220mm Rocket</label>
+        <ammoTypes>
+            <Ammo_220mmRocket_HE>Bullet_220mmRocket_HE</Ammo_220mmRocket_HE>
+            <Ammo_220mmRocket_Incendiary>Bullet_220mmRocket_Incendiary</Ammo_220mmRocket_Incendiary>
+        </ammoTypes>
+        <isMortarAmmoSet>true</isMortarAmmoSet>
+    </CombatExtended.AmmoSetDef>
+
+    <!-- ==================== Ammo ========================== -->
+
+    <ThingDef Class="CombatExtended.AmmoDef" Name="Ammo220mmRocketBase" ParentName="MediumAmmoBase" Abstract="True">
+        <description>220mm Heavy rocket used in multiple rocket launch systems.</description>
+        <statBases>
+            <Mass>280</Mass>
+            <Bulk>551.05</Bulk>
+        </statBases>
+        <tradeTags>
+            <li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+        </tradeTags>
+        <thingCategories>
+            <li>Ammo220mmRocket</li>
+        </thingCategories>
+        <stackLimit>25</stackLimit>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo220mmRocketBase">
+        <defName>Ammo_220mmRocket_HE</defName>
+        <label>220mm Rocket (HE)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/220mm Rocket/HE</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>1851.67</MarketValue>
+        </statBases>
+        <ammoClass>RocketHE</ammoClass>
+        <detonateProjectile>Bullet_220mmRocket_HE</detonateProjectile>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo220mmRocketBase">
+        <defName>Ammo_220mmRocket_Incendiary</defName>
+        <label>220mm Rocket (Incendiary)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Ammo/220mm Rocket/Incendiary</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>2188.5</MarketValue>
+        </statBases>
+        <ammoClass>RocketThermobaric</ammoClass>
+        <detonateProjectile>Bullet_220mmRocket_Incendiary</detonateProjectile>
+    </ThingDef>
+
+    <!-- ================== Projectiles ================== -->
+
+    <ThingDef Name="Base220mmRocketBullet" ParentName="BaseExplosiveBullet" Abstract="true">
+        <graphicData>
+            <drawSize>2.2</drawSize>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <speed>76</speed>
+            <dropsCasings>false</dropsCasings>
+            <soundExplode>Highfleet_Big_Explosion</soundExplode>
+            <soundAmbient>MortarRound_Ambient</soundAmbient>
+            <soundImpactAnticipate>Rocket_PreImpact</soundImpactAnticipate>
+        </projectile>
+        <modExtensions>
+            <li Class="ProjectileImpactFX.TrailerProjectileExtension">
+                <trailerMoteInterval>1</trailerMoteInterval>
+                <trailMoteSize>1</trailMoteSize>
+            </li>
+        </modExtensions>
+    </ThingDef>
+
+    <ThingDef ParentName="Base220mmRocketBullet">
+        <defName>Bullet_220mmRocket_HE</defName>
+        <label>220mm Rocket (HE)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Projectiles/HE/Rocket_Projectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>1404</damageAmountBase>
+            <explosionRadius>9</explosionRadius>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Large>219</Fragment_Large>
+                    <Fragment_Small>287</Fragment_Small> <!--nerfed to due performance issues-->
+                </fragments>
+                <fragAngleRange>0~0.5</fragAngleRange>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="Base220mmRocketBullet">
+        <defName>Bullet_220mmRocket_Incendiary</defName>
+        <label>220mm Rocket (Incendiary)</label>
+        <graphicData>
+            <texPath>Highfleet/Things/Projectiles/Incendiary/Rocket_Projectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Thermobaric</damageDef>
+            <damageAmountBase>1460</damageAmountBase>
+            <explosionRadius>12.5</explosionRadius>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+    </ThingDef>
+
+    <!-- ==================== Recipes ========================== -->
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_220mmRocket_HE</defName>
+        <label>make 220mm Rocket (HE) x1</label>
+        <description>Craft 1 220mm Rocket (HE).</description>
+        <jobString>Making 220mm Rocket (HE).</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>560</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>4</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>78</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>FSX</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_220mmRocket_HE>2</Ammo_220mmRocket_HE>
+        </products>
+        <workAmount>89600</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeAmmo_220mmRocket_Incendiary</defName>
+        <label>make 220mm Rocket (Incendiary) x1</label>
+        <description>Craft 1 220mm Rocket (Incendiary).</description>
+        <jobString>Making 220mm Rocket (Incendiary).</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>560</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>4</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>FSX</li>
+                    </thingDefs>
+                </filter>
+                <count>121</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>ComponentIndustrial</li>
+                <li>FSX</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Ammo_220mmRocket_Incendiary>2</Ammo_220mmRocket_Incendiary>
+        </products>
+        <workAmount>106800</workAmount>
+    </RecipeDef>
+
+</Defs>

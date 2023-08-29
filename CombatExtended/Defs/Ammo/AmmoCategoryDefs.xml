@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <CombatExtended.AmmoCategoryDef>
+        <defName>HF_HEDP</defName>
+        <label>high-explosive dual-purpose</label>
+        <description>Shell with a shaped charge warhead. Detonates on impact, creating a super-heated stream of molten metal that punches through enemy armor.</description>
+    </CombatExtended.AmmoCategoryDef>
+
+    <CombatExtended.AmmoCategoryDef>
+        <defName>HF_Incendiary</defName>
+        <label>Incendiary</label>
+        <description>Shell with a shaped charge thermobaric warhead. Detonates on impact, creating a super-heated stream of molten metal that punches through enemy armor and potentially igniting nearby objects.</description>
+    </CombatExtended.AmmoCategoryDef>
+
+    <CombatExtended.AmmoCategoryDef>
+        <defName>HF_Proximity</defName>
+        <label>Time-fuzed HE</label>
+        <description>Explodes into a cone of shrapnel after some time of getting launched</description>
+    </CombatExtended.AmmoCategoryDef>
+
+    <CombatExtended.AmmoCategoryDef>
+        <defName>HF_Guided</defName>
+        <label>Laser Guided</label>
+        <description>A HEAT Projectile that homes on its target after firing</description>
+    </CombatExtended.AmmoCategoryDef>
+</Defs>
